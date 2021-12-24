@@ -1,9 +1,10 @@
-type categoryLevels = 'easy' | 'medium' | 'hard' | 'expert' | 'hardcore'
+import { Levels } from './levels'
+
 export interface Question {
   question: string
   answers: string[]
   correctAnswer: string
-  category: categoryLevels
+  category: Levels
 }
 export interface Questions {
   easy: Question[]

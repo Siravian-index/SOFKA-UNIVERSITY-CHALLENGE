@@ -6,7 +6,9 @@ function App() {
     <div className='App'>
       <h1>Nav</h1>
       <Routes>
-        <Route path='/' element={<Quiz />} />
+        <Route path='/' element={<Quiz />}>
+          <Route path=':level' />
+        </Route>
       </Routes>
     </div>
   )

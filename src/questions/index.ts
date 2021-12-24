@@ -5,7 +5,7 @@ import { expert } from './expert'
 import { hardcore } from './hardcore'
 import { Questions } from '../interfaces/question'
 
-export const questions: Questions = {
+export const allQuestions: Questions = {
   easy,
   medium,
   hard,
