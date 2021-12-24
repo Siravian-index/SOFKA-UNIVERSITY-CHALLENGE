@@ -1,4 +1,4 @@
-export interface Player {
+export interface PlayerAnswer {
   question: string
   answer: string
   correct: boolean
