@@ -4,16 +4,26 @@ import { Questions } from '../../interfaces/question'
 
 type Props = {
   questions: Questions
+  totalQuestions: number
+  questionsPerLevel: number
+  setScore: React.Dispatch<React.SetStateAction<number>>
+  incrementScoreBy: number
 }
 
-const QuizQuestions: React.FC<Props> = ({ questions }) => {
+const QuizQuestions: React.FC<Props> = ({
+  questions,
+  totalQuestions,
+  questionsPerLevel,
+  setScore,
+  incrementScoreBy,
+}) => {
   const level: GameLevels = ['easy', 'medium', 'hard', 'expert', 'hardcore']
   const [currentLevel, setCurrentLevel] = useState(0)
   const [random, setRandom] = useState(0)
+  const [showOptions, setShowOptions] = useState(false)
 
   const nextQuestion = () => {
-    //TODO set a const to totalQuestions instead of 5!
-    setCurrentLevel((prev) => (prev < 5 ? prev + 1 : prev))
+    setCurrentLevel((prev) => (prev < totalQuestions ? prev + 1 : prev))
     // TODO make a randomize func
     setRandom((prev) => prev + 1)
   }
@@ -22,8 +32,8 @@ const QuizQuestions: React.FC<Props> = ({ questions }) => {
     const answer = e.currentTarget.value
     const correct = questions[level[currentLevel]][random].correctAnswer === answer
     if (correct) {
-      // setScore++
-      console.log('correct')
+      setScore((prev) => prev + incrementScoreBy)
+      setShowOptions(true)
     } else {
       // player loses
       console.log('you lose')
