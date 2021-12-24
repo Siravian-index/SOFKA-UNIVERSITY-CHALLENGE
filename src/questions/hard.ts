@@ -1,6 +1,6 @@
 import { Question } from '../interfaces/question'
 
-// lvl-02
+// lvl-03
 export const medium: Question[] = [
   {
     question: "What's the biggest animal in the world?",
