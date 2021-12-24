@@ -3,33 +3,33 @@ import { Question } from '../interfaces/question'
 // lvl-02
 export const medium: Question[] = [
   {
-    question: 'What is the biggest animal in the world?',
-    answers: ['The blue whale', 'Tiger', 'Elephant', 'Dodo'],
-    correctAnswer: 'The blue whale',
+    question: 'Which of the following countries banned the use of personal genetic ancestry tests?',
+    answers: ['Austria', 'Canada', 'Sweden', 'Germany'],
+    correctAnswer: 'Germany',
     category: 'medium',
   },
   {
-    question: 'What is the name of the toy cowboy in Toy Story?',
-    answers: ['Rex', 'Woody', 'Eddy', 'Derrick'],
-    correctAnswer: 'Woody',
+    question: 'Which of the following characters were considered for inclusion in Super Smash Bros. Melee?',
+    answers: ['Mega Man', 'Meta Knight', 'Lucas', 'Diddy Kong'],
+    correctAnswer: 'Lucas',
     category: 'medium',
   },
   {
-    question: 'What is the color of an emerald?',
-    answers: ['Blue', 'Red', 'Yellow', 'Green'],
-    correctAnswer: 'Green',
+    question: "Which famous book is sub-titled 'The Modern Prometheus'?",
+    answers: ['Frankenstein', 'The Legend of Sleepy Hollow', 'Dracula', 'The Strange Case of Dr. Jekyll and Mr. Hyde '],
+    correctAnswer: 'Frankenstein',
     category: 'medium',
   },
   {
-    question: 'Where does the President of the United States live while in office?',
-    answers: ['Over a hill', 'The Big House', 'The White House', 'An Apartment'],
-    correctAnswer: 'The White House',
+    question: 'In Norse mythology, what is the name of the serpent which eats the roots of the ash tree Yggdrasil?',
+    answers: ['Bragi', 'Odin', 'Ymir', 'Nidhogg'],
+    correctAnswer: 'Nidhogg',
     category: 'medium',
   },
   {
-    question: 'Where does Santa Claus live?',
-    answers: ['The North Pole', 'Alaska', 'The South Pole', 'Hawaii'],
-    correctAnswer: 'The North Pole',
+    question: 'Which car manufacturer created the "Aventador"?',
+    answers: ['Lamborghini', 'Bugatti', 'Pagani', 'Ferrari'],
+    correctAnswer: 'Lamborghini',
     category: 'medium',
   },
 ]

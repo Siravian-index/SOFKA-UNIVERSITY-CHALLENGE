@@ -3,15 +3,15 @@ import { Question } from '../interfaces/question'
 // lvl-03
 export const hard: Question[] = [
   {
-    question: 'What is the biggest animal in the world?',
-    answers: ['The blue whale', 'Tiger', 'Elephant', 'Dodo'],
-    correctAnswer: 'The blue whale',
+    question: 'In the "Halo" series, what is the name of the race of aliens humans refer to as "Grunts"?',
+    answers: ['Sangheili', "Yanme'e", 'Huragok', 'Unggoy'],
+    correctAnswer: 'Unggoy',
     category: 'hard',
   },
   {
-    question: 'What is the name of the toy cowboy in Toy Story?',
-    answers: ['Rex', 'Woody', 'Eddy', 'Derrick'],
-    correctAnswer: 'Woody',
+    question: 'Who is a pioneer of "Minimal Music" in 1960s?',
+    answers: ['Wolfgang Amadeus Mozart', 'Brian Eno', 'Sigur Ros', 'Steve Reich'],
+    correctAnswer: 'Steve Reich',
     category: 'hard',
   },
   {
@@ -21,15 +21,15 @@ export const hard: Question[] = [
     category: 'hard',
   },
   {
-    question: 'Where does the President of the United States live while in office?',
-    answers: ['Over a hill', 'The Big House', 'The White House', 'An Apartment'],
-    correctAnswer: 'The White House',
+    question: 'When was the Valve Corporation founded?',
+    answers: ['December 26, 1994', 'March 22, 1997', 'March 13, 1997', 'August 24, 1996'],
+    correctAnswer: 'August 24, 1996',
     category: 'hard',
   },
   {
-    question: 'Where does Santa Claus live?',
-    answers: ['The North Pole', 'Alaska', 'The South Pole', 'Hawaii'],
-    correctAnswer: 'The North Pole',
+    question: 'What was the number on Gerald\'s shirt in "Hey Arnold!"?',
+    answers: ['33', '83', '38', '88'],
+    correctAnswer: '33',
     category: 'hard',
   },
 ]
