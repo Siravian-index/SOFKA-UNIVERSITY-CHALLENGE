@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Player } from '../../interfaces/player'
 import { allQuestions } from '../../questions'
 import QuizQuestions from './QuizQuestions'
 
@@ -9,14 +10,21 @@ const QUESTIONS_PER_LEVEL = 5
 const Quiz: React.FC = () => {
   const [score, setScore] = useState(0)
   const [isGameOver, setIsGameOver] = useState(true)
-  const [didSurrender, setDidSurrender] = useState(false)
+  const [didRetire, setDidRetire] = useState(false)
   const [questions, setQuestions] = useState(allQuestions)
   const [player, setPlayer] = useState({})
 
   const startGame = () => {
     setIsGameOver(false)
     setScore(0)
-    setDidSurrender(false)
+    // fix this player type
+    setPlayer({})
+    setDidRetire(false)
+  }
+
+  const handleRetirement = () => {
+    setDidRetire(true)
+    setIsGameOver(true)
   }
 
   return (
@@ -27,14 +35,16 @@ const Quiz: React.FC = () => {
         {isGameOver && <button onClick={() => startGame()}>Start Game</button>}
         {!isGameOver && (
           <QuizQuestions
+            setIsGameOver={setIsGameOver}
+            isGameOver={isGameOver}
             questions={questions}
+            setScore={setScore}
             totalQuestions={TOTAL_QUESTIONS}
             questionsPerLevel={QUESTIONS_PER_LEVEL}
-            setScore={setScore}
             incrementScoreBy={INCREMENT_SCORE_BY}
           />
         )}
-        {!isGameOver && <button>Surrender</button>}
+        {!isGameOver && <button onClick={() => handleRetirement()}>Retire</button>}
       </div>
     </>
   )

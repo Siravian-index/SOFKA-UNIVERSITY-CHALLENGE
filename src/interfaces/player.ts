@@ -1,6 +1,6 @@
 export interface Player {
-  nick: string
-  score: number
-  didWin: boolean
-  didSurrender: boolean
+  question: string
+  answer: string
+  correct: boolean
+  correctAnswer: string
 }
