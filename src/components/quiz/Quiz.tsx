@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { GameLevels } from '../../interfaces/levels'
 import { PlayerAnswer } from '../../interfaces/player'
 import { allQuestions } from '../../questions'
@@ -10,18 +11,20 @@ const TOTAL_QUESTIONS = 5
 const QUESTIONS_PER_LEVEL = 5
 
 const Quiz: React.FC = () => {
+  const level: GameLevels = ['easy', 'medium', 'hard', 'expert', 'hardcore']
+  const navigate = useNavigate()
+  // component's state
   const [score, setScore] = useState(0)
   const [isGameOver, setIsGameOver] = useState(true)
   const [didRetire, setDidRetire] = useState(false)
   const [disableBtn, setDisableBtn] = useState(false)
   const [questions, setQuestions] = useState(allQuestions)
   const [playerAnswer, setPlayerAnswer] = useState<PlayerAnswer[]>([])
-  // component's state
-  const level: GameLevels = ['easy', 'medium', 'hard', 'expert', 'hardcore']
   const [currentLevel, setCurrentLevel] = useState(0)
   const [random, setRandom] = useState(pickRandomQuestion(QUESTIONS_PER_LEVEL))
   const [showNext, setShowNext] = useState(false)
 
+  console.log(playerAnswer)
   const startGame = () => {
     setIsGameOver(false)
     setScore(0)
@@ -33,6 +36,14 @@ const Quiz: React.FC = () => {
 
   const handleRetirement = () => {
     // TODO - improve this option
+    navigate('/result', {
+      state: {
+        retired: true,
+        won: false,
+        lost: false,
+        score,
+      },
+    })
     setDidRetire(true)
     setIsGameOver(true)
     setShowNext(false)
@@ -71,12 +82,31 @@ const Quiz: React.FC = () => {
       } else {
         // player loses
         // TODO - handle this better
+        navigate('/result', {
+          state: {
+            retired: false,
+            won: false,
+            lost: true,
+            score,
+          },
+        })
         setIsGameOver(true)
         setScore(0)
         setDisableBtn(true)
         console.log('you lose')
       }
     }
+  }
+
+  const handleWin = () => {
+    navigate('/result', {
+      state: {
+        retired: false,
+        won: true,
+        lost: false,
+        score,
+      },
+    })
   }
 
   return (
@@ -111,10 +141,19 @@ const Quiz: React.FC = () => {
           )}
           {!isGameOver && playerAnswer.length > 0 && (
             <button
-              className='h-10 px-5 m-2 text-blue-100 transition-colors duration-150 bg-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-700'
+              className='h-10 px-5 m-2 text-white transition-colors duration-150 bg-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-700'
               onClick={() => handleRetirement()}
             >
               Retire
+            </button>
+          )}
+          {/* create another btn when user finishes correctly. call it save */}
+          {playerAnswer.length === TOTAL_QUESTIONS && !didRetire && (
+            <button
+              className='h-10 px-5 m-2 text-white transition-colors duration-150 bg-green-600 rounded-lg focus:shadow-outline hover:bg-green-700'
+              onClick={() => handleWin()}
+            >
+              Save Result
             </button>
           )}
         </div>
