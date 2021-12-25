@@ -20,7 +20,6 @@ const Quiz: React.FC = () => {
   const level: GameLevels = ['easy', 'medium', 'hard', 'expert', 'hardcore']
   const [currentLevel, setCurrentLevel] = useState(0)
   const [random, setRandom] = useState(pickRandomQuestion(QUESTIONS_PER_LEVEL))
-  // delete
   const [showNext, setShowNext] = useState(false)
 
   const startGame = () => {
@@ -29,6 +28,7 @@ const Quiz: React.FC = () => {
     setPlayerAnswer([])
     setDidRetire(false)
     setDisableBtn(false)
+    setCurrentLevel(0)
   }
 
   const handleRetirement = () => {
@@ -62,12 +62,14 @@ const Quiz: React.FC = () => {
       if (correct) {
         setScore((prev) => prev + INCREMENT_SCORE_BY)
         // only show next if not last question
+        // using 4 to compensate for array starting at 0
         if (currentLevel < 4) {
           setShowNext(true)
         }
         setDisableBtn(true)
       } else {
         // player loses
+        // TODO - handle this better
         setIsGameOver(true)
         setScore(0)
         setDisableBtn(true)
@@ -78,9 +80,13 @@ const Quiz: React.FC = () => {
 
   return (
     <>
-      <div>
-        <h3>General Quiz Game!</h3>
-        {!isGameOver && <h5>Score: {score} </h5>}
+      <div className='flex flex-col justify-center items-center md:w-1/2 md:m-auto gap-y-1'>
+        <h3 className='md:text-3xl text-2xl'>Quiz Game!</h3>
+        {!isGameOver && (
+          <h5 className="hover:after:content-['!!!']">
+            Score: <span className='text-red-700'>{score}</span>
+          </h5>
+        )}
         {isGameOver && <button onClick={() => startGame()}>Start Game</button>}
         {!isGameOver && (
           <QuizQuestions
@@ -93,8 +99,18 @@ const Quiz: React.FC = () => {
             disableBtn={disableBtn}
           />
         )}
-        {!isGameOver && playerAnswer.length > 0 && <button onClick={() => handleRetirement()}>Retire</button>}
-        {showNext && <button onClick={() => nextQuestion()}>Next question</button>}
+        <div className='flex flex-col mt-5 gap-3'>
+          {showNext && !didRetire && (
+            <button className='bg-blue-700 text-white py-2 px-1' onClick={() => nextQuestion()}>
+              Next question
+            </button>
+          )}
+          {!isGameOver && playerAnswer.length > 0 && (
+            <button className='bg-gray-700 text-white py-2 px-1' onClick={() => handleRetirement()}>
+              Retire
+            </button>
+          )}
+        </div>
       </div>
     </>
   )

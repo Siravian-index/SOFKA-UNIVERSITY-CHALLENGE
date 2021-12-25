@@ -3,7 +3,7 @@ import Quiz from './components/quiz/Quiz'
 
 function App() {
   return (
-    <div className='App'>
+    <div className='font-mono'>
       <h1>Nav</h1>
       <Routes>
         <Route path='/' element={<Quiz />}>

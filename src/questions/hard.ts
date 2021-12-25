@@ -15,9 +15,9 @@ export const hard: Question[] = [
     category: 'hard',
   },
   {
-    question: 'What is the color of an emerald?',
-    answers: ['Blue', 'Red', 'Yellow', 'Green'],
-    correctAnswer: 'Green',
+    question: 'Which one is not a Javascript framework?',
+    answers: ['Gin', 'Next', 'Vue', 'Angular'],
+    correctAnswer: 'Gin',
     category: 'hard',
   },
   {
