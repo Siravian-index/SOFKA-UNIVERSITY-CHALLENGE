@@ -32,9 +32,10 @@ const Quiz: React.FC = () => {
   }
 
   const handleRetirement = () => {
-    // improve this option
+    // TODO - improve this option
     setDidRetire(true)
     setIsGameOver(true)
+    setShowNext(false)
   }
 
   const nextQuestion = () => {
@@ -84,7 +85,7 @@ const Quiz: React.FC = () => {
         <h3 className='md:text-3xl text-2xl'>Quiz Game!</h3>
         {!isGameOver && (
           <h5 className="hover:after:content-['!!!']">
-            Score: <span className='text-red-700'>{score}</span>
+            Score: <span className='text-blue-700'>{score}</span>
           </h5>
         )}
         {isGameOver && <button onClick={() => startGame()}>Start Game</button>}
@@ -99,14 +100,20 @@ const Quiz: React.FC = () => {
             disableBtn={disableBtn}
           />
         )}
-        <div className='flex flex-col mt-5 gap-3'>
+        <div className='flex flex-col mt-5 gap-3 '>
           {showNext && !didRetire && (
-            <button className='bg-blue-700 text-white py-2 px-1' onClick={() => nextQuestion()}>
+            <button
+              className='h-10 px-5 m-2 text-blue-100 transition-colors duration-150 bg-blue-600 rounded-lg focus:shadow-outline hover:bg-blue-700'
+              onClick={() => nextQuestion()}
+            >
               Next question
             </button>
           )}
           {!isGameOver && playerAnswer.length > 0 && (
-            <button className='bg-gray-700 text-white py-2 px-1' onClick={() => handleRetirement()}>
+            <button
+              className='h-10 px-5 m-2 text-blue-100 transition-colors duration-150 bg-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-700'
+              onClick={() => handleRetirement()}
+            >
               Retire
             </button>
           )}

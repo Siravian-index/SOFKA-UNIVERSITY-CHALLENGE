@@ -1,5 +1,4 @@
 import { GameLevels } from '../../interfaces/levels'
-import { PlayerAnswer } from '../../interfaces/player'
 import { Questions } from '../../interfaces/question'
 
 type Props = {
@@ -28,12 +27,19 @@ const QuizQuestions: React.FC<Props> = ({
         {currentLevel + 1}/{TOTAL_QUESTIONS}
       </h6>
       <h5 className='text-center mb-2'>
-        <span className='hover:underline hover:text-red-700'>Question</span>:{' '}
-        {questions[level[currentLevel]][random].question}{' '}
+        <span className=''>Question</span>: {questions[level[currentLevel]][random].question}{' '}
       </h5>
       {questions[level[currentLevel]][random].answers.map((answer) => (
         <div key={answer}>
-          <button className='hover:underline my-1' value={answer} disabled={disableBtn} onClick={(e) => checkAnswer(e)}>
+          <button
+            style={{
+              color: answer === questions[level[currentLevel]][random].correctAnswer && disableBtn ? 'green' : 'black',
+            }}
+            className='hover:underline my-1'
+            value={answer}
+            disabled={disableBtn}
+            onClick={(e) => checkAnswer(e)}
+          >
             {answer}
           </button>
         </div>

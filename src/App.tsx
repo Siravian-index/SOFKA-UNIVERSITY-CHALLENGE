@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
+import Nav from './components/nav/Nav'
 import Quiz from './components/quiz/Quiz'
 
 function App() {
   return (
     <div className='font-mono'>
-      <h1>Nav</h1>
+      <Nav />
       <Routes>
         <Route path='/' element={<Quiz />}>
           <Route path=':level' />
