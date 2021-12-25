@@ -23,19 +23,28 @@ const Leaderboard: React.FC = () => {
         <div className='mt-1 mb-2'>
           <h4 className='text-2xl'>Leader board</h4>
         </div>
-        <ul>
+        <div>
           {scores.length > 0 &&
             scores.map((user, i) => (
-              <li key={i} className='flex flex-col  md:flex-row'>
-                <div>Player:{user.userName}</div>
-                <div>score:{user.score}</div>
+              <div
+                key={i}
+                className='grid grid-cols-1 gap-1 md:grid-cols-3 md:gap-4 bg-gray-300  p-3 rounded outline-double outline-gray-400 mb-3'
+              >
                 <div>
-                  status:
-                  {(user.status.lost && 'Lost') || (user.status.won && 'Won') || (user.status.retired && 'Retired')}
+                  <p>Player:{user.userName}</p>
                 </div>
-              </li>
+                <div>
+                  <p>score:{user.score}</p>
+                </div>
+                <div>
+                  <p>
+                    status:
+                    {(user.status.lost && 'Lost') || (user.status.won && 'Won') || (user.status.retired && 'Retired')}
+                  </p>
+                </div>
+              </div>
             ))}
-        </ul>
+        </div>
         {!scores.length && (
           <div className='text-center'>
             <h4 className='text-xl'>...There are not results yet.</h4>

@@ -111,14 +111,18 @@ const Quiz: React.FC = () => {
 
   return (
     <>
-      <div className='flex flex-col justify-center items-center md:w-1/2 md:m-auto gap-y-1'>
+      <div className='flex flex-col justify-center items-center md:w-1/2 md:m-auto gap-y-1 bg-gray-200 p-2 rounded outline-double outline-gray-400'>
         <h3 className='md:text-3xl text-2xl'>Quiz Game!</h3>
         {!isGameOver && (
           <h5 className="hover:after:content-['!!!']">
             Score: <span className='text-blue-700'>{score}</span>
           </h5>
         )}
-        {isGameOver && <button onClick={() => startGame()}>Start Game</button>}
+        {isGameOver && (
+          <button className='hover:text-red-500' onClick={() => startGame()}>
+            Start Game
+          </button>
+        )}
         {!isGameOver && (
           <QuizQuestions
             questions={questions}
