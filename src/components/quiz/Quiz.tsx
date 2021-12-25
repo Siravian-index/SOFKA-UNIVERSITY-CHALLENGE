@@ -139,7 +139,7 @@ const Quiz: React.FC = () => {
               Next question
             </button>
           )}
-          {!isGameOver && playerAnswer.length > 0 && (
+          {!isGameOver && playerAnswer.length > 0 && playerAnswer.length < TOTAL_QUESTIONS && (
             <button
               className='h-10 px-5 m-2 text-white transition-colors duration-150 bg-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-700'
               onClick={() => handleRetirement()}

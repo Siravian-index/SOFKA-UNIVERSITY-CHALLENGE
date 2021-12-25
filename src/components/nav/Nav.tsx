@@ -5,6 +5,7 @@ const Nav: React.FC = () => {
     <>
       <nav className='bg-gray-700 sticky mb-4 h-10 flex justify-center items-center'>
         <div className='flex justify-around items-center w-80'>
+          {/* if page is / => reload else link to / */}
           <Link to={'/'}>
             <button className='text-white hover:text-red-700'>New Game</button>
           </Link>
